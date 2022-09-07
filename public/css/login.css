@@ -1,0 +1,33 @@
+.container{
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    display: flex;
+}
+
+.loginform{
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+label{
+    min-width: max-content;
+}
+.buttons{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+input{
+    width: 100%;
+}
+.col-sm-10{
+    width: 100%;
+}
+button{
+    width: 50%;
+
+}
+.hide{
+    display: none;
+}
