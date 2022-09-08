@@ -15,6 +15,7 @@ const LocalStrategy = require("passport-local").Strategy;
 
 var adminRoutes = require("./routers/login_admin.js");
 var homeRoutes = require("./routers/home.js");
+var dashboardRoutes = require("./routers/dashboard");
 
 
 const { Admin } = require("./database_models/models");
@@ -70,3 +71,4 @@ mongoose
 
 app.use("/", homeRoutes);
 app.use("/admin", adminRoutes);
+app.use("/dashboard", dashboardRoutes);
