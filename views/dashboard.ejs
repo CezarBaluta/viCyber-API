@@ -12,31 +12,14 @@
         <div class="container">
             <div class="buttons">
                 <button id="Add" type="button" class="btn btn-primary">Primary</button>
-                <button id="Edit" type="button" class="btn btn-secondary">Secondary</button>
+                <button id="Edit" type="button" class="btn btn-dark">Secondary</button>
             </div>
         </div>
         <div class="content">
-            <div id="addNews" class="">
-                <div class="mb-3 column">
-                    <label class="col-sm-2 col-form-label">Title</label>
-                      <input class="form-control" >
-                </div>
+           
 
-                <div class="mb-3 column">
-                    <label class="col-sm-2 col-form-label">Content</label>
-                      <input class="form-control" >
-                </div>
-
-                <div class="mb-3 ">
-                    <label for="formFileMultiple" class="form-label">Images (more than one)</label>
-                    <input id="photos" class="form-control" type="file" id="formFileMultiple" multiple>
-                </div>
-            </div>
-
-            <div id="editNews" class="hide">
-                
-
-                  
+            <%-include("partials/addNewsForm.ejs")  %> 
+            <div id="editNews" class="hide">                  
             </div>
         </div>
     </div>

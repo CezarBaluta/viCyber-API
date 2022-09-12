@@ -1,0 +1,19 @@
+<div id="addNews" class="">
+    <form action="/dashboard" method="POST" enctype="multipart/form-data">
+        <div class="mb-3 column">
+            <label class="col-sm-2 col-form-label">Title</label>
+            <input class="form-control" type="text" name="title" id="" >
+        </div>     
+        <div class="mb-3 column">
+            <label class="col-sm-2 col-form-label" >Content</label>
+            <input class="form-control" type="text" name="content"  id="">
+        </div>
+        <div class="mb-3 ">
+            <label for="formFileMultiple" class="form-label">Images (more than one)</label>
+            <input id="photos" class="form-control" name="photosArray" type="file" id="formFileMultiple" multiple>
+        </div>
+        <button type="submit" class="btn btn-dark submitButton" name="" value="">
+            Submit
+        </button>
+    </form>
+</div>

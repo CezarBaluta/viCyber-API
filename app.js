@@ -11,6 +11,7 @@ const session = require("express-session");
 const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const LocalStrategy = require("passport-local").Strategy;
+var ImageKit = require("imagekit");
 
 
 var adminRoutes = require("./routers/login_admin.js");
