@@ -30,8 +30,7 @@ const upload = multer({
     storage: storage,
   });
 
-router.post("/", upload.any("photosArray"), (req, res) => {
-  (async () => {
+router.post("/", upload.any("photosArray"), async (req, res) => {
 ///photo handling
     var photosLinksArray = [];
     var id = await dashboardFunctions.generateId(News);
@@ -51,7 +50,7 @@ router.post("/", upload.any("photosArray"), (req, res) => {
     news.save();
 
     res.redirect("/dashboard");
-  })();
+ 
 });
 
 module.exports = router;
