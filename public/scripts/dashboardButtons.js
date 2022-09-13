@@ -1,12 +1,22 @@
+
 var addButton = document.getElementById("Add");
 var editButton = document.getElementById("Edit");
 
+var editNews = document.getElementById("editNews");
+var addNews = document.getElementById("addNews");
+
+var firstClickOnEdit = false;
+
 addButton.addEventListener("click",() => {
-    //.classList.toggle("hide");
-    //.classList.toggle("hide");
+    editNews.classList.toggle("hide");
+    addNews.classList.toggle("hide");
 });
 
 editButton.addEventListener("click",() => {
-    //.classList.toggle("hide");
-    //.classList.toggle("hide");
+    if(firstClickOnEdit === false){
+        firstClickOnEdit = true;
+        renderNews();
+    }
+    editNews.classList.toggle("hide");
+    addNews.classList.toggle("hide");
 });
