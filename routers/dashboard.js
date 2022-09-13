@@ -11,8 +11,6 @@ const { News } = require("../database_models/models.js");
 var dashboardFunctions = require("../backend_scripts/dashboardFunctions");
 
 
-
-
 const storage = multer.diskStorage({
   destination: function (request, file, callback) {
     callback(null, "./public/uploads/");
@@ -33,7 +31,6 @@ const upload = multer({
   });
 
 router.post("/", upload.any("photosArray"), (req, res) => {
-
   (async () => {
 ///photo handling
     var photosLinksArray = [];

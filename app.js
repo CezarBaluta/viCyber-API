@@ -17,6 +17,7 @@ var ImageKit = require("imagekit");
 var adminRoutes = require("./routers/login_admin.js");
 var homeRoutes = require("./routers/home.js");
 var dashboardRoutes = require("./routers/dashboard");
+var apiRoutes = require("./routers/api");
 
 
 const { Admin } = require("./database_models/models");
@@ -73,3 +74,4 @@ mongoose
 app.use("/", homeRoutes);
 app.use("/admin", adminRoutes);
 app.use("/dashboard", dashboardRoutes);
+app.use("/api", apiRoutes);
