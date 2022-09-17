@@ -2,7 +2,6 @@ require("dotenv").config();
 const path = require('path')
 const express = require("express");
 const bodyParser = require("body-parser");
-const ejs = require("ejs");
 const mongoose = require("mongoose");
 const _ = require("lodash");
 const multer = require("multer");
@@ -12,7 +11,7 @@ const passport = require("passport");
 const passportLocalMongoose = require("passport-local-mongoose");
 const LocalStrategy = require("passport-local").Strategy;
 var ImageKit = require("imagekit");
-
+var cons = require('consolidate');
 
 var adminRoutes = require("./routers/login_admin.js");
 var homeRoutes = require("./routers/home.js");
@@ -26,10 +25,13 @@ const { Admin } = require("./database_models/models");
 
 const app = express();
 
+app.engine('html', cons.swig)
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
+
 app.use(express.static('public'));
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
-app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.json());
