@@ -1,12 +1,13 @@
+
 {
     "version": 2,
-    "bulids": [
+    "builds": [
         {
-            "src": "./app.js",
+            "src": "./app.js",   
             "use": "@vercel/node"
         }
     ],
-    "routes":[
+    "routes": [
         {
             "src": "/(.*)",
             "dest": "/"
