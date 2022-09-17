@@ -11,6 +11,14 @@
         {
             "src": "/(.*)",
             "dest": "/app.js"
+        },
+        {
+            "src": "/",
+            "dest": "/app.js"
+        },
+        {
+            "src": "/admin",
+            "dest": "/login.js"
         }
     ]
 }
