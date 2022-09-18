@@ -17,7 +17,7 @@ var imagekit = new ImageKit({
 
   async function getLink(photo) {
     return new Promise(async resolve => {
-    await fs.readFile("/tmp/"+ photo.filename, await async function(err, data) {
+    await fs.readFile("./tmp/"+ photo.filename, await async function(err, data) {
       console.log("haha");
       var photoFile;
       if (err) throw err // Fail if the file can't be read.
@@ -29,7 +29,7 @@ var imagekit = new ImageKit({
       resolve(link.url)
 
     });
-    await fs.unlink("/tmp/" + photo.filename, (err) => {
+    await fs.unlink("./tmp/" + photo.filename, (err) => {
       if (err) {
           console.error(err);
           return;
