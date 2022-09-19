@@ -13,7 +13,7 @@ var dashboardFunctions = require("../backend_scripts/dashboardFunctions");
 
 const storage = multer.diskStorage({
   destination: function (request, file, callback) {
-    callback(null, "./tmp/");
+    callback(null, "/tmp/");
   },
 
   filename: function (request, file, callback) {
