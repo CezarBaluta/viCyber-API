@@ -13,7 +13,7 @@ var dashboardFunctions = require("../backend_scripts/dashboardFunctions");
 
 const storage = multer.diskStorage({
   destination: function (request, file, callback) {
-    callback(null, "/tmp/");
+    callback(null, process.env.TMPPATH);
   },
 
   filename: function (request, file, callback) {
@@ -48,7 +48,6 @@ router.post("/", upload.any("photosArray"), async (req, res) => {
       photosLinks:photosLinksArray,
     });
     news.save();
-
     res.redirect("/dashboard");
  
 });

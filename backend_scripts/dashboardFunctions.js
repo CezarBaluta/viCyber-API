@@ -17,19 +17,17 @@ var imagekit = new ImageKit({
 
   async function getLink(photo) {
     return new Promise(async resolve => {
-    await fs.readFile("/tmp/"+ photo.filename, await async function(err, data) {
-      console.log("haha");
+    await fs.readFile(process.env.TMPPATH+ photo.filename, await async function(err, data) {
       var photoFile;
       if (err) throw err // Fail if the file can't be read.
       else{
         photoFile = data;
       }
-      console.log("lol");
       link =  await generatePhotoLink(photoFile);
       resolve(link.url)
 
     });
-    await fs.unlink("/tmp/" + photo.filename, (err) => {
+    await fs.unlink(process.env.TMPPATH + photo.filename, (err) => {
       if (err) {
           console.error(err);
           return;
