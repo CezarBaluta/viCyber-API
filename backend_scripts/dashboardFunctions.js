@@ -40,7 +40,7 @@ module.exports = {
     generateId: async function generateId(Model) {
         const array = await Model.find({});
         if(array === undefined) return 0;
-        return array.length;
+        return array[array.length-1]._id+1;
     },
     generatePhotoLink : generatePhotoLink ,
     getLink: getLink,
