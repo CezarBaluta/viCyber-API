@@ -1,6 +1,7 @@
 const apiLink = "/api/news/";
 const news = document.getElementsByClassName("news")[0];
-const newsSection = document.getElementById("editNews")
+const newsSection = document.getElementById("editNews");
+
 
 async function renderNews(){
     var noOfNewsOnPage = document.getElementsByClassName("news").length-1;
@@ -23,5 +24,6 @@ async function renderNews(){
         }
         newNews.getElementsByClassName('newsImg')[0].remove();
         newsSection.appendChild(newNews);
+        newsSection.insertBefore(newNews,loadMoreNews);
     }
 }
