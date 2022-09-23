@@ -15,6 +15,11 @@ router.get("/news", (req, res) => {
     });
 });
 
+router.get("/news/order", async (req,res) => {
+    var news = await News.find({},{_id:1});
+    res.json(news);
+});
+
 router.get("/news/:id", async (req,res) => {
         const newsId = req.params.id;
         var news = await News.findOne({_id:newsId});
