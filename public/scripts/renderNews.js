@@ -1,4 +1,5 @@
 const apiLink = "/api/news/";
+const apiDeleteLink = "dashboard/news/delete/";
 const news = document.getElementsByClassName("news")[0];
 const newsSection = document.getElementById("editNews");
 var orderOfNews;
@@ -26,6 +27,8 @@ async function renderNews(){
             console.log(document.getElementsByClassName('newsImg')[0]);
             newNews.appendChild(image);
         }
+        console.log(newNews.getElementsByClassName("deleteButton")[0]);
+        newNews.getElementsByClassName("deleteButton")[0].href = apiDeleteLink + orderOfNewsData[noOfNewsOnPage+i]._id;
         newNews.getElementsByClassName('newsImg')[0].remove();
         newsSection.appendChild(newNews);
         newsSection.insertBefore(newNews,loadMoreNews);
