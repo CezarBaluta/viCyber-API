@@ -1,12 +1,17 @@
 const apiLink = "/api/news/";
 const news = document.getElementsByClassName("news")[0];
 const newsSection = document.getElementById("editNews");
+var orderOfNews;
+var orderOfNewsData;
 
 
 async function renderNews(){
+    orderOfNews = await fetch(apiLink + "order");
+    orderOfNewsData = await orderOfNews.json();
+    console.log(orderOfNewsData);
     var noOfNewsOnPage = document.getElementsByClassName("news").length-1;
     for(var i = 0;i<5;i++){
-        var newsData = await fetch(apiLink + (noOfNewsOnPage+i));
+        var newsData = await fetch(apiLink + (orderOfNewsData[noOfNewsOnPage+i]._id));
         var newsDataJson = await newsData.json();
 
         if(newsData === null)
