@@ -7,25 +7,21 @@ var orderOfNewsData;
 var fetched = false;
 
 async function renderNews(){
-    if(fetched){
+    if(!fetched){
         fetched = true;
         orderOfNews = await fetch(apiLink + "order");
         orderOfNewsData = await orderOfNews.json();
     }
-    if(orderOfNewsData === undefined){
-        console.log(document.getElementById("loadMoreNews"));
+    var noOfNewsOnPage = document.getElementsByClassName("news").length-1;
+    if(orderOfNewsData === undefined || noOfNewsOnPage === orderOfNewsData.length){
         document.getElementById("loadMoreNews").remove();
         return;
     }
-    var noOfNewsOnPage = document.getElementsByClassName("news").length-1;
     for(var i = 0;i < 5 && noOfNewsOnPage+i < orderOfNewsData.length;i++){
         var newsData = await fetch(apiLink + (orderOfNewsData[noOfNewsOnPage+i]._id));
         var newsDataJson = await newsData.json();
-
-        if(newsData === null)
-            break;
-        var newNews= news.cloneNode(true);
         console.log(newsDataJson);
+        var newNews= news.cloneNode(true);
         newNews.getElementsByClassName('title')[0].innerText = newsDataJson.title;
         newNews.getElementsByClassName('newsContent')[0].innerText = newsDataJson.content;
 
@@ -35,10 +31,16 @@ async function renderNews(){
             console.log(document.getElementsByClassName('newsImg')[0]);
             newNews.appendChild(image);
         }
+        console.log();
+        
         console.log(newNews.getElementsByClassName("deleteButton")[0]);
         newNews.getElementsByClassName("deleteButton")[0].href = apiDeleteLink + orderOfNewsData[noOfNewsOnPage+i]._id;
         newNews.getElementsByClassName('newsImg')[0].remove();
         newsSection.appendChild(newNews);
         newsSection.insertBefore(newNews,loadMoreNews);
+    }
+    noOfNewsOnPage = document.getElementsByClassName("news").length-1
+    if(noOfNewsOnPage === orderOfNewsData.length){
+        document.getElementById("loadMoreNews").remove();
     }
 }
