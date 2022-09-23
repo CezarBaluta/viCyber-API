@@ -52,4 +52,11 @@ router.post("/", upload.any("photosArray"), async (req, res) => {
  
 });
 
+
+router.get("/news/delete/:id", async (req,res) => {
+  const newsId = req.params.id;
+  var news = await News.findOneAndDelete({_id:newsId});
+  res.redirect("/dashboard");
+});
+
 module.exports = router;
