@@ -63,3 +63,12 @@
 #loadMoreNews{
     margin-bottom: 40px;
 }
+.AClass{
+    right:0px;
+    position: absolute;
+}
+
+.smallImg{
+    width: 100px;
+    height: 100px;
+}

@@ -12,6 +12,7 @@ var firstClickOnEdit = false;
 addButton.addEventListener("click",() => {
     editNews.classList.toggle("hide");
     addNews.classList.toggle("hide");
+    ///clear function
 });
 
 editButton.addEventListener("click",() => {

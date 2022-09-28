@@ -20,7 +20,6 @@ async function renderNews(){
     for(var i = 0;i < 5 && noOfNewsOnPage+i < orderOfNewsData.length;i++){
         var newsData = await fetch(apiLink + (orderOfNewsData[noOfNewsOnPage+i]._id));
         var newsDataJson = await newsData.json();
-        console.log(newsDataJson);
         var newNews= news.cloneNode(true);
         newNews.getElementsByClassName('title')[0].innerText = newsDataJson.title;
         newNews.getElementsByClassName('newsContent')[0].innerText = newsDataJson.content;
@@ -31,10 +30,14 @@ async function renderNews(){
             console.log(document.getElementsByClassName('newsImg')[0]);
             newNews.appendChild(image);
         }
-        console.log();
-        
-        console.log(newNews.getElementsByClassName("deleteButton")[0]);
         newNews.getElementsByClassName("deleteButton")[0].href = apiDeleteLink + orderOfNewsData[noOfNewsOnPage+i]._id;
+        newNews.getElementsByClassName("editNewsButton")[0].id = newsDataJson._id;
+        var button = newNews.getElementsByClassName("editNewsButton")[0];
+        button.addEventListener("click",event => {
+            
+            addToForm(event.target.id);
+           // console.log(newNews.getElementsByClassName('id')[0].innerText);
+        });
         newNews.getElementsByClassName('newsImg')[0].remove();
         newsSection.appendChild(newNews);
         newsSection.insertBefore(newNews,loadMoreNews);
