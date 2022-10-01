@@ -32,15 +32,50 @@ const upload = multer({
 
 router.post("/", upload.any("photosArray"), async (req, res) => {
 ///photo handling
+  if(req.body.toEdit==="true"){
+    var photosLinksArray = [];
+    var photos = req.files;
+    var j = 0;
+
+   
+
+    var newsId = req.body.idToEdit;
+    var newsToEdit = await News.findOne({_id:newsId});
+    for(var i=0;i<newsToEdit.photosLinks.length;i++){
+      var photoToKeep = "oldPhoto" + i;
+        if(req.body[photoToKeep]!=undefined){
+          photosLinksArray[j] = newsToEdit.photosLinks[i];
+          j++;
+        }
+    }
+    for(photo of photos){
+      var link = await dashboardFunctions.getLink(photo);
+      photosLinksArray[j++] = link;
+    }
+    var updateDocument = {
+      $set: {
+      _id:id,
+      title:req.body.title,
+      content:req.body.content,
+      photosLinks:photosLinksArray,
+      },
+    };
+    const result = await News.updateOne(
+      newsToEdit,
+      updateDocument
+    );
+    res.redirect("/dashboard");
+  }
+  else{
     var photosLinksArray = [];
     var id = await dashboardFunctions.generateId(News);
     var i = 0;
     var photos = req.files;
-   for(photo of photos){
+    for(photo of photos){
     var link = await dashboardFunctions.getLink(photo);
     photosLinksArray[i++] = link;
-   }
-    console.log(photosLinksArray);
+    }
+    
     const news = new News({
       _id:id,
       title:req.body.title,
@@ -49,7 +84,7 @@ router.post("/", upload.any("photosArray"), async (req, res) => {
     });
     news.save();
     res.redirect("/dashboard");
- 
+  }
 });
 
 

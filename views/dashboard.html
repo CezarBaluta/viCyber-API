@@ -11,8 +11,8 @@
     <div class="allScreen">
         <div class="container">
             <div class="buttons">
-                <button id="Add" type="button" class="btn btn-primary">Primary</button>
-                <button id="Edit" type="button" class="btn btn-dark">Secondary</button>
+                <button id="Add" type="button" class="btn btn-primary">Add News</button>
+                <button id="Edit" type="button" class="btn btn-dark">Edit News</button>
             </div>
         </div>
         <div class="content">
@@ -27,18 +27,21 @@
                         <textarea class="form-control" type="text" name="content"  id="contentForm"></textarea>
                     </div>
                     <div id="smallImagesSection">
-                        <div id="imagesInFormTemplate" class="hide smallImg" style="position:relative;">
+                        <div id="imagesInFormTemplate" class="hide smallImg smallImgDiv" style="position:relative;">
                             <button class="close AClass" type="button" >
                                 <span>&times;</span>
                             </button>
                             <img class="smallImg" src="/pub/myimage123.jpg"/>
+                            <input type="hidden" name="oldPhoto" value="">
                         </div>
                     </div>
                     <div class="mb-3 ">
                         <label for="formFileMultiple" class="form-label">Images (more than one)</label>
                         <input id="photos" class="form-control" name="photosArray" type="file" id="formFileMultiple" multiple>
                     </div>
-                    <button type="submit" class="btn btn-dark submitButton" name="" value="">
+                    <input id="toEdit" type="hidden" name="toEdit" value="">
+                    <input id="idToEdit" type="hidden" name="idToEdit" value="">
+                    <button type="submit" class="btn btn-dark submitButton" name="" value="false">
                         Submit
                     </button>
                 </form>
@@ -67,6 +70,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="scripts/clearFunction.js"></script>
     <script src="scripts/addToForm.js"></script>
     <script src="scripts/renderNews.js"></script>
     <script src="scripts/dashboardButtons.js"></script>

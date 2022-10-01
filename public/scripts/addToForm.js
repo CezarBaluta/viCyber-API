@@ -3,6 +3,7 @@ var smallImagesSection = document.getElementById("smallImagesSection");
 
 async function addToForm(id) {
     console.log(id);
+    document.getElementById("idToEdit").value = id;
     var newsData = await fetch(apiLink + (id));
     var data = await newsData.json();
     console.log(data);
@@ -11,18 +12,24 @@ async function addToForm(id) {
     document.getElementById("titleForm").value = data.title;
     document.getElementById("contentForm").value = data.content;
     for(var i = 0;i<data.photosLinks.length;i++){
+        console.log(i);
         var newSmallImage = smallImage.cloneNode(true);
         newSmallImage.children[1].src = data.photosLinks[i];
         newSmallImage.classList.remove("hide");
+        newSmallImage.children[2].name = "oldPhoto" + i;
+        newSmallImage.children[2].value = i;
         newSmallImage.id = "";
         newSmallImage.getElementsByClassName("AClass")[0].addEventListener("click",event => {
-            if(event.target.parentNode.parentNode.id != "smallImagesSection")
+            if(event.target.parentNode.parentNode.id != "smallImagesSection"){
+
                 event.target.parentNode.parentNode.remove();
-            else
+            }
+            else{
                 event.target.parentNode.remove();            
+            }
         });
         smallImagesSection.appendChild(newSmallImage);
-        smallImagesSection.insertBefore(newSmallImage,smallImage);
+        //smallImagesSection.insertBefore(newSmallImage,smallImage);
     }
 }
 
